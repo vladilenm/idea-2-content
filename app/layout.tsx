@@ -1,9 +1,10 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/next";
 import { UserProvider } from "@/components/UserProvider";
 import { MotionProvider } from "@/components/MotionProvider";
+import { ServiceWorkerRegister } from "@/components/ServiceWorkerRegister";
 
 const inter = Inter({
   subsets: ["latin", "cyrillic"],
@@ -22,6 +23,26 @@ const jetbrainsMono = JetBrains_Mono({
 export const metadata: Metadata = {
   title: "Synapse — Idea-to-Content Engine",
   description: "Преврати одну сырую идею в полноценную контент-машину.",
+  applicationName: "Synapse",
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "black-translucent",
+    title: "Synapse",
+  },
+  icons: {
+    icon: [
+      { url: "/favicon-32.png", sizes: "32x32", type: "image/png" },
+      { url: "/favicon-16.png", sizes: "16x16", type: "image/png" },
+    ],
+    apple: "/apple-icon-180.png",
+  },
+};
+
+export const viewport: Viewport = {
+  themeColor: "#07070b",
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
 };
 
 export default function RootLayout({
@@ -37,6 +58,7 @@ export default function RootLayout({
           <MotionProvider>{children}</MotionProvider>
         </UserProvider>
         <Analytics />
+        <ServiceWorkerRegister />
       </body>
     </html>
   );
