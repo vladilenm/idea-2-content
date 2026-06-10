@@ -147,7 +147,7 @@ export default function Page() {
           </h1>
           <p className="mt-5 text-base sm:text-lg text-white/55 max-w-2xl leading-relaxed">
             Вводишь мысль. Получаешь сценарий YouTube, пост в Telegram и 5 хуков для коротких видео.
-            Всё за несколько секунд. Без бэкенда, без рендеринга — чистая клиентская демонстрация новой способности.
+            Всё за несколько секунд — на живой LLM, с авторизацией и сохранением идей в твоём аккаунте.
           </p>
         </section>
 
@@ -306,7 +306,7 @@ export default function Page() {
 
         {/* Footer */}
         <footer className="mt-20 border-t border-white/5 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-[11px] font-mono uppercase tracking-[0.18em] text-white/30">
-          <div>fast-tech prototype · client-side mock</div>
+          <div>next.js · supabase · deepseek</div>
           <div>synapse · v0.1 · 2026</div>
         </footer>
       </div>

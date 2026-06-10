@@ -1,3 +1,5 @@
+import type { LLMContentPayload } from "./llm-types";
+
 export type Format = "youtube" | "telegram" | "shorts";
 
 export interface GeneratedAsset {
@@ -8,12 +10,6 @@ export interface GeneratedAsset {
   content: string;
   leverage: number;
   meta?: string;
-}
-
-interface DeepSeekResponse {
-  youtube: string;
-  telegram: string;
-  shorts: string[];
 }
 
 export async function generate(rawIdea: string): Promise<GeneratedAsset[]> {
@@ -30,7 +26,7 @@ export async function generate(rawIdea: string): Promise<GeneratedAsset[]> {
     throw new Error(errText);
   }
 
-  const data = (await res.json()) as DeepSeekResponse;
+  const data = (await res.json()) as LLMContentPayload;
 
   const shortsContent = data.shorts
     .slice(0, 5)

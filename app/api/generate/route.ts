@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import OpenAI from "openai";
+import { isValidLLMPayload } from "@/lib/llm-types";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -23,23 +24,6 @@ const SYSTEM_PROMPT = `Ты — content-stratiст из мира AI-эры ди�
 
 function buildUserPrompt(idea: string) {
   return `Сырая идея:\n"""${idea}"""\n\nРазверни её в JSON по заданной схеме.`;
-}
-
-type DeepSeekPayload = {
-  youtube: string;
-  telegram: string;
-  shorts: string[];
-};
-
-function isValidPayload(x: unknown): x is DeepSeekPayload {
-  if (!x || typeof x !== "object") return false;
-  const o = x as Record<string, unknown>;
-  return (
-    typeof o.youtube === "string" &&
-    typeof o.telegram === "string" &&
-    Array.isArray(o.shorts) &&
-    o.shorts.every((s) => typeof s === "string")
-  );
 }
 
 export async function POST(req: Request) {
@@ -91,7 +75,7 @@ export async function POST(req: Request) {
       );
     }
 
-    if (!isValidPayload(parsed)) {
+    if (!isValidLLMPayload(parsed)) {
       return NextResponse.json(
         { error: "DeepSeek вернул JSON, не соответствующий схеме.", payload: parsed },
         { status: 502 }
