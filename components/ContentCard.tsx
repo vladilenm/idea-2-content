@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useRef, MouseEvent } from "react";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import type { GeneratedAsset, Format } from "@/lib/generate";
 
 const FORMAT_ICON: Record<Format, JSX.Element> = {
@@ -50,7 +50,7 @@ export function ContentCard({ asset, index }: { asset: GeneratedAsset; index: nu
   }
 
   return (
-    <motion.div
+    <m.div
       initial={{ opacity: 0, y: 24, scale: 0.97 }}
       animate={{ opacity: 1, y: 0, scale: 1 }}
       transition={{ duration: 0.55, delay: index * 0.18, ease: [0.21, 0.61, 0.35, 1] }}
@@ -116,7 +116,7 @@ export function ContentCard({ asset, index }: { asset: GeneratedAsset; index: nu
         {/* Ambient glow */}
         <div className={`pointer-events-none absolute -top-24 -right-24 h-56 w-56 rounded-full bg-gradient-to-br ${FORMAT_ACCENT[asset.format]} opacity-20 blur-3xl animate-pulse-glow`} />
       </div>
-    </motion.div>
+    </m.div>
   );
 }
 

@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, m } from "framer-motion";
 import { generate, type GeneratedAsset } from "@/lib/generate";
 import { Pipeline, type PipelineStage } from "@/components/Pipeline";
 import { ContentCard } from "@/components/ContentCard";
@@ -129,7 +129,7 @@ export default function Page() {
 
         {/* Hero */}
         <section className="mt-12 sm:mt-20 max-w-3xl">
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
@@ -137,7 +137,7 @@ export default function Page() {
           >
             <span className="h-1.5 w-1.5 rounded-full bg-electric-violet shadow-[0_0_10px_rgba(139,92,246,0.9)]" />
             AI-era · content leverage
-          </motion.div>
+          </m.div>
           <h1 className="mt-5 text-4xl sm:text-6xl font-bold tracking-tight text-white leading-[1.05]">
             Одна сырая идея —{" "}
             <span className="bg-gradient-to-r from-electric-violet via-electric-indigo to-electric-cyan bg-clip-text text-transparent">
@@ -208,7 +208,7 @@ export default function Page() {
 
         {/* Error banner */}
         {errorMessage && (
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: -6 }}
             animate={{ opacity: 1, y: 0 }}
             className="mt-6 flex items-start gap-3 rounded-xl border border-rose-500/30 bg-rose-500/[0.07] px-4 py-3 text-sm text-rose-200"
@@ -225,7 +225,7 @@ export default function Page() {
             >
               ×
             </button>
-          </motion.div>
+          </m.div>
         )}
 
         {/* Pipeline */}
@@ -245,7 +245,7 @@ export default function Page() {
         <section className="mt-10 sm:mt-12">
           <AnimatePresence mode="wait">
             {phase === "generating" && (
-              <motion.div
+              <m.div
                 key="gen"
                 initial={{ opacity: 0, y: 8 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -253,11 +253,11 @@ export default function Page() {
                 transition={{ duration: 0.35 }}
               >
                 <GeneratingState stageIndex={stageIndex} />
-              </motion.div>
+              </m.div>
             )}
 
             {phase === "ready" && (
-              <motion.div
+              <m.div
                 key="ready"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -277,11 +277,11 @@ export default function Page() {
                     </div>
                   ))}
                 </div>
-              </motion.div>
+              </m.div>
             )}
 
             {phase === "idle" && (
-              <motion.div
+              <m.div
                 key="idle"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -299,7 +299,7 @@ export default function Page() {
                     <div className="mt-1 text-xs text-white/40 leading-relaxed">{c.d}</div>
                   </div>
                 ))}
-              </motion.div>
+              </m.div>
             )}
           </AnimatePresence>
         </section>

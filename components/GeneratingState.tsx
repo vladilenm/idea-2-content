@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 
 const LINES = [
   "анализ ядра тезиса",
@@ -35,7 +35,7 @@ export function GeneratingState({ stageIndex }: { stageIndex: number }) {
           const done = i < stageIndex;
           const current = i === stageIndex;
           return (
-            <motion.div
+            <m.div
               key={line}
               initial={{ opacity: 0, x: -8 }}
               animate={{ opacity: 1, x: 0 }}
@@ -62,7 +62,7 @@ export function GeneratingState({ stageIndex }: { stageIndex: number }) {
               </span>
               {current && (
                 <span className="ml-2 inline-flex h-1 flex-1 overflow-hidden rounded-full bg-white/5">
-                  <motion.span
+                  <m.span
                     initial={{ width: "0%" }}
                     animate={{ width: "100%" }}
                     transition={{ duration: 0.9, ease: "linear" }}
@@ -70,7 +70,7 @@ export function GeneratingState({ stageIndex }: { stageIndex: number }) {
                   />
                 </span>
               )}
-            </motion.div>
+            </m.div>
           );
         })}
       </div>

@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, m } from "framer-motion";
 import { deleteIdea, listIdeas, type Idea } from "@/lib/ideas";
 
 export function IdeasDrawer({
@@ -40,14 +40,14 @@ export function IdeasDrawer({
     <AnimatePresence>
       {open && (
         <>
-          <motion.div
+          <m.div
             className="fixed inset-0 z-40 bg-graphite-950/70 backdrop-blur-sm"
             onClick={onClose}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
           />
-          <motion.aside
+          <m.aside
             className="fixed right-0 top-0 z-50 h-full w-full max-w-md border-l border-white/10 bg-graphite-950/95 backdrop-blur-xl"
             initial={{ x: "100%" }}
             animate={{ x: 0 }}
@@ -127,7 +127,7 @@ export function IdeasDrawer({
                   </div>
                 ))}
             </div>
-          </motion.aside>
+          </m.aside>
         </>
       )}
     </AnimatePresence>

@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 
 const STAGES = [
   { id: "idea", label: "Идея", hint: "сырой импульс" },
@@ -36,7 +36,7 @@ export function Pipeline({ stage }: { stage: PipelineStage }) {
           const current = i === active && stage !== "done";
           return (
             <div key={s.id} className="flex flex-col items-center text-center">
-              <motion.div
+              <m.div
                 animate={{
                   scale: current ? [1, 1.12, 1] : 1,
                   boxShadow: reached
@@ -52,7 +52,7 @@ export function Pipeline({ stage }: { stage: PipelineStage }) {
                 {current && (
                   <span className="absolute inset-0 rounded-full border border-electric-violet/60 animate-ping" />
                 )}
-              </motion.div>
+              </m.div>
               <div className="mt-3 sm:mt-4">
                 <div className={`text-[11px] sm:text-sm font-semibold tracking-wide uppercase ${reached ? "text-white" : "text-white/40"}`}>
                   {s.label}
