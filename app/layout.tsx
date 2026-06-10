@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { Analytics } from "@vercel/analytics/next";
 import { UserProvider } from "@/components/UserProvider";
 
 export const metadata: Metadata = {
@@ -25,6 +26,7 @@ export default function RootLayout({
       <body className="min-h-screen antialiased">
         <div className="grain" />
         <UserProvider>{children}</UserProvider>
+        <Analytics />
       </body>
     </html>
   );
